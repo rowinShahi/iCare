@@ -10,18 +10,20 @@ import Foundation
 
 enum Storyboard: String, StoryboardProvider {
   
-  case host, news, chat
+  case host, news, chat, more
   
   // MARK: Return Storyboard Identifier
   var storyboardIdentifier: String {
     get {
       switch self{
       case .host:
-        return "News"
+        return "HostTabBar"
       case .news:
-        return "Article"
+        return "News"
       case .chat:
-        return "Match"
+        return "Chat"
+      case .more:
+        return "More"
       }
     }
   }
@@ -31,11 +33,13 @@ enum Storyboard: String, StoryboardProvider {
     get {
       switch self{
       case .host:
-        return "News"
+        return "HostTabBar"
       case .news:
-        return "Article"
+        return "NewsViewController"
       case .chat:
-        return "Match"
+        return "ChatViewController"
+      case .more:
+        return "MoreViewController"
       }
     }
   }
@@ -45,11 +49,13 @@ enum Storyboard: String, StoryboardProvider {
     get {
       switch self{
       case .host:
-        return "News"
+        return "HostTabBar"
       case .news:
-        return "Article"
+        return "NewsNavigationController"
       case .chat:
-        return "Match"
+        return "ChatNavigationController"
+      case .more:
+        return "MoreNavigationController"
       }
     }
   }
