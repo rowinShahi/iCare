@@ -98,7 +98,6 @@
 				5C6CCB2D1E56C30400CC1D5D /* Modules */,
 				5C6CCB721E57001E00CC1D5D /* Helper */,
 				5C6CCB3D1E56C30400CC1D5D /* Resources */,
-				5C6CCB3F1E56C30400CC1D5D /* Storybords */,
 				5C6CCB401E56C30400CC1D5D /* Supporting Files */,
 			);
 			path = iCare;
@@ -226,13 +225,6 @@
 				5C6CCB561E56C87200CC1D5D /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		5C6CCB3F1E56C30400CC1D5D /* Storybords */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Storybords;
 			sourceTree = "<group>";
 		};
 		5C6CCB401E56C30400CC1D5D /* Supporting Files */ = {

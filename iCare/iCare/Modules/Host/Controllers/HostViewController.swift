@@ -16,9 +16,6 @@ class HostViewController: UITabBarController {
 extension HostViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    let auditConfigurator = AuditorConfigurator()
-    let messageValidator = auditConfigurator.messageAuditor()
-    print(messageValidator.validateValue("Hi Lee, can  you call me at +60175570098 http://www.example.com/listing10.htm last http://www.carlist.my/listing10.htm"))
   }
   
   override func viewWillAppear(_ animated: Bool) {

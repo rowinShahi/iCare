@@ -96,7 +96,7 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
-
+    
     let message = messages[indexPath.row]
     cell.textView.text = message.text ?? ""
     cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text ?? "").width + 32
