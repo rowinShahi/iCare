@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ChatViewController: UICollectionViewController, UINavigationControllerDelegate {
+class ChatViewController: UICollectionViewController {
   
   // MARK: Properties
-  let cellId = "cellId"
+  let leftCellId = "leftCellId"
+  let rightCellId = "rightCellId"
   var containerViewBottomAnchor: NSLayoutConstraint?
   
   lazy var inputContainerView: ChatInputContainerView = {
@@ -27,7 +28,10 @@ class ChatViewController: UICollectionViewController, UINavigationControllerDele
       collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
   }
-  
+}
+
+// MARK: View Life Cycle
+extension ChatViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupCollectionView()
@@ -35,27 +39,9 @@ class ChatViewController: UICollectionViewController, UINavigationControllerDele
     loadMessages()
   }
   
-  func loadMessages() {
-    let response = Utils.readJson(fileName: "messages")
-    
-    guard let list = response as? [[String: AnyObject]] else {
-      return
-    }
-    self.messages = list.map({ Message(dictionary: $0)})
-  }
-  
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     NotificationCenter.default.removeObserver(self)
-  }
-  
-  func handleSend() {
-    if inputContainerView.inputTextField.text!.characters.count > 0{
-      let message = Message(dictionary:["text":inputContainerView.inputTextField.text! as AnyObject,
-                                        "fromId":Auth.shared.currentUser?.id as AnyObject])
-      messages.append(message)
-      inputContainerView.inputTextField.text! = ""
-    }
   }
   
   override var inputAccessoryView: UIView? {
@@ -66,6 +52,27 @@ class ChatViewController: UICollectionViewController, UINavigationControllerDele
   
   override var canBecomeFirstResponder : Bool {
     return true
+  }
+}
+
+// MARK: Helper Methods
+extension ChatViewController {
+  func loadMessages() {
+    let response = Utils.readJson(fileName: "messages")
+    
+    guard let list = response as? [[String: AnyObject]] else {
+      return
+    }
+    self.messages = list.map({ Message(dictionary: $0)})
+  }
+  
+  func handleSend() {
+    if inputContainerView.inputTextField.text!.characters.count > 0{
+      let message = Message(dictionary:["text":inputContainerView.inputTextField.text! as AnyObject,
+                                        "fromId":Auth.shared.currentUser?.id as AnyObject])
+      messages.append(message)
+      inputContainerView.inputTextField.text! = ""
+    }
   }
   
   func setupKeyboardObservers() {
@@ -80,13 +87,15 @@ class ChatViewController: UICollectionViewController, UINavigationControllerDele
   }
 }
 
+// MARK: Collectionview Delegate
 extension ChatViewController : UICollectionViewDelegateFlowLayout {
   
   func setupCollectionView () {
     collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     collectionView?.alwaysBounceVertical = true
     collectionView?.backgroundColor = UIColor.white
-    collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
+    collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: leftCellId)
+    collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: rightCellId)
     collectionView?.keyboardDismissMode = .interactive
   }
   
@@ -95,9 +104,13 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
-    
     let message = messages[indexPath.row]
+    var cellIdentifier = leftCellId
+    if message.fromId == Auth.shared.currentUser?.id {
+      cellIdentifier = rightCellId
+    }
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! ChatMessageCell
     cell.textView.text = message.text ?? ""
     cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text ?? "").width + 32
     cell.textView.isHidden = false
@@ -112,7 +125,6 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
       cell.textView.textColor = UIColor.black
       cell.bubbleViewRightAnchor?.isActive = false
       cell.bubbleViewLeftAnchor?.isActive = true
-      
     }
     return cell
   }

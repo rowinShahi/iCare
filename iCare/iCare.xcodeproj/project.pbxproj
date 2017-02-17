@@ -118,11 +118,11 @@
 		5C6CCB2E1E56C30400CC1D5D /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				5C6CCB5B1E56D4C700CC1D5D /* Chat.storyboard */,
 				5C6CCB591E56CC3500CC1D5D /* Model */,
 				5C6CCB2F1E56C30400CC1D5D /* Controllers */,
 				5C6CCB301E56C30400CC1D5D /* Helper */,
 				5C6CCB321E56C30400CC1D5D /* Views */,
-				5C6CCB5B1E56D4C700CC1D5D /* Chat.storyboard */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -154,8 +154,8 @@
 		5C6CCB331E56C30400CC1D5D /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				5C6CCB5A1E56CC3F00CC1D5D /* Model */,
 				5C6CCB4E1E56C4D200CC1D5D /* HostTabBar.storyboard */,
+				5C6CCB5A1E56CC3F00CC1D5D /* Model */,
 				5C6CCB341E56C30400CC1D5D /* Controllers */,
 				5C6CCB351E56C30400CC1D5D /* Helper */,
 				5C6CCB371E56C30400CC1D5D /* Views */,
@@ -188,11 +188,11 @@
 		5C6CCB381E56C30400CC1D5D /* News */ = {
 			isa = PBXGroup;
 			children = (
+				5C6CCB5D1E56D4D400CC1D5D /* News.storyboard */,
 				5C6CCB581E56CC2B00CC1D5D /* Model */,
 				5C6CCB391E56C30400CC1D5D /* Controllers */,
 				5C6CCB3A1E56C30400CC1D5D /* Helper */,
 				5C6CCB3C1E56C30400CC1D5D /* Views */,
-				5C6CCB5D1E56D4D400CC1D5D /* News.storyboard */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -264,11 +264,11 @@
 		5C6CCB631E56D66E00CC1D5D /* More */ = {
 			isa = PBXGroup;
 			children = (
+				5C6CCB681E56D67D00CC1D5D /* More.storyboard */,
 				5C6CCB641E56D66E00CC1D5D /* Controllers */,
 				5C6CCB651E56D66E00CC1D5D /* Helper */,
 				5C6CCB661E56D66E00CC1D5D /* Model */,
 				5C6CCB671E56D66E00CC1D5D /* Views */,
-				5C6CCB681E56D67D00CC1D5D /* More.storyboard */,
 			);
 			path = More;
 			sourceTree = "<group>";
