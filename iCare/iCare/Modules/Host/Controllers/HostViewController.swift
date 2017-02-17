@@ -16,7 +16,6 @@ class HostViewController: UITabBarController {
 extension HostViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +36,7 @@ extension HostViewController {
   }
 }
 
-
+// MARK: DataSource for tabBarItem
 enum TabDataSource {
   
   case news, chat, more
@@ -51,10 +50,10 @@ enum TabDataSource {
       controller =  Storyboard.news.initWithNavigationController()
     case .chat:
       tabBarItem =  TabDataSource.setTabBarWith(title: "Chat", image: UIImage(named: "chat_icon"))
-      controller =  Storyboard.news.initWithNavigationController()
+      controller =  Storyboard.chat.initWithNavigationController()
     case .more:
       tabBarItem =  TabDataSource.setTabBarWith(title: "More", image: UIImage(named: "more_icon"))
-      controller =  Storyboard.news.initWithNavigationController()
+      controller =  Storyboard.more.initWithNavigationController()
     }
     controller.tabBarItem = tabBarItem
     return controller

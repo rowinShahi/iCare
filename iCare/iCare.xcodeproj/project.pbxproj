@@ -23,6 +23,8 @@
 		5C6CCB691E56D67D00CC1D5D /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CCB681E56D67D00CC1D5D /* More.storyboard */; };
 		5C6CCB6B1E56D68E00CC1D5D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB6A1E56D68E00CC1D5D /* MoreViewController.swift */; };
 		5C6CCB6D1E56DAD500CC1D5D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB6C1E56DAD500CC1D5D /* Image.swift */; };
+		5C6CCB6F1E56E32300CC1D5D /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB6E1E56E32300CC1D5D /* ChatMessageCell.swift */; };
+		5C6CCB711E56E76600CC1D5D /* ChatInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB701E56E76600CC1D5D /* ChatInputContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		5C6CCB681E56D67D00CC1D5D /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		5C6CCB6A1E56D68E00CC1D5D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		5C6CCB6C1E56DAD500CC1D5D /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		5C6CCB6E1E56E32300CC1D5D /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		5C6CCB701E56E76600CC1D5D /* ChatInputContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 		5C6CCB321E56C30400CC1D5D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C6CCB6E1E56E32300CC1D5D /* ChatMessageCell.swift */,
+				5C6CCB701E56E76600CC1D5D /* ChatInputContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6CCB531E56C73A00CC1D5D /* Storyboard.swift in Sources */,
+				5C6CCB6F1E56E32300CC1D5D /* ChatMessageCell.swift in Sources */,
 				5C6CCB6D1E56DAD500CC1D5D /* Image.swift in Sources */,
 				5C6CCB4D1E56C30400CC1D5D /* ViewController.swift in Sources */,
 				5C6CCB491E56C30400CC1D5D /* AppDelegate.swift in Sources */,
@@ -421,6 +428,7 @@
 				5C6CCB621E56D50A00CC1D5D /* NewsViewController.swift in Sources */,
 				5C6CCB6B1E56D68E00CC1D5D /* MoreViewController.swift in Sources */,
 				5C6CCB601E56D4FC00CC1D5D /* ChatViewController.swift in Sources */,
+				5C6CCB711E56E76600CC1D5D /* ChatInputContainerView.swift in Sources */,
 				5C6CCB551E56C76300CC1D5D /* StoryboardProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
