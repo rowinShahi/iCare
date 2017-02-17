@@ -20,34 +20,28 @@ class ChatViewController: UICollectionViewController, UINavigationControllerDele
     return chatInputContainerView
   }()
   
-  var messages:[String] = ["Perfect, I am really glad to hear that! How may I help you today?",
-                           "I am really sorry to hear that. Is there anything I can do to help you?",
-                           "Hello! May I have your name pleas?",
-                           "Tell me more about…",
-                           "So you are saying that…correct",
-                           "I’m not sure, but let me find out for you.",
-                           "I’m sorry to keep you waiting. I have managed to reproduce the problem. Here’s what needs to be done to fix it.",
-                           "Can I put you on hold for a moment?",
-                           "So you are saying that…correct",
-                           "I’m sorry this has happened. I understand your frustration, and I will do my best to help you.",
-                           "Let me put you on hold for just a few moments and verify this information.",
-                           "Jerry, let me review your transaction history. Please bear with me for a few more minutes.",
-                           "Hello! May I have your name pleas?",
-                           "Tell me more about…",
-                           "So you are saying that…correct",
-                           "I’m sorry this has happened. I understand your frustration, and I will do my best to help you.",
-                           "Let me put you on hold for just a few moments and verify this information.",
-                           "Jerry, let me review your transaction history. Please bear with me for a few more minutes.",
-                           "So you are saying that…correct",
-                           "I’m not sure, but let me find out for you.",
-                           "I’m sorry to keep you waiting. I have managed to reproduce the problem. Here’s what needs to be done to fix it."]
-  
-  
+  var messages:[Message] = [] {
+    didSet{
+      collectionView?.reloadData()
+      let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+      collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupCollectionView()
     setupKeyboardObservers()
+    loadMessages()
+  }
+  
+  func loadMessages() {
+    let response = Utils.readJson(fileName: "messages")
+    
+    guard let list = response as? [[String: AnyObject]] else {
+      return
+    }
+    self.messages = list.map({ Message(dictionary: $0)})
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -57,10 +51,10 @@ class ChatViewController: UICollectionViewController, UINavigationControllerDele
   
   func handleSend() {
     if inputContainerView.inputTextField.text!.characters.count > 0{
-      messages.append(inputContainerView.inputTextField.text!)
-      collectionView?.reloadData()
-      let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-      collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+      let message = Message(dictionary:["text":inputContainerView.inputTextField.text! as AnyObject,
+                                        "fromId":Auth.shared.currentUser?.id as AnyObject])
+      messages.append(message)
+      inputContainerView.inputTextField.text! = ""
     }
   }
   
@@ -104,12 +98,11 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
 
     let message = messages[indexPath.row]
-    
-    cell.textView.text = message
-    cell.bubbleWidthAnchor?.constant = estimateFrameForText(message).width + 32
+    cell.textView.text = message.text ?? ""
+    cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text ?? "").width + 32
     cell.textView.isHidden = false
     
-    if message.characters.count%2 == 0 {
+    if message.fromId == Auth.shared.currentUser?.id {
       cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
       cell.textView.textColor = UIColor.white
       cell.bubbleViewRightAnchor?.isActive = true
@@ -121,7 +114,6 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
       cell.bubbleViewLeftAnchor?.isActive = true
       
     }
-    
     return cell
   }
   
@@ -132,7 +124,7 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let message = messages[indexPath.row]
     var height: CGFloat = 80
-    height = estimateFrameForText(message).height + 20
+    height = estimateFrameForText(message.text!).height + 20
     let width = UIScreen.main.bounds.width
     return CGSize(width: width, height: height)
   }

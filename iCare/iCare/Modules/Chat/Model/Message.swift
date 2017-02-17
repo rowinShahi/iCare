@@ -17,9 +17,13 @@ class Message: NSObject {
   
   init(dictionary: [String: AnyObject]) {
     super.init()
-    
     fromId = dictionary["fromId"] as? String
-    text = dictionary["text"] as? String
+    
+    let message = dictionary["text"] as? String ?? ""
+    let auditConfigurator = AuditorConfigurator()
+    let messageValidator = auditConfigurator.messageAuditor()
+    
+    text = messageValidator.validateValue(message)
     timestamp = dictionary["timestamp"] as? NSNumber
     toId = dictionary["toId"] as? String
   }
