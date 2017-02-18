@@ -11,7 +11,6 @@
 		5C6CCB491E56C30400CC1D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB411E56C30400CC1D5D /* AppDelegate.swift */; };
 		5C6CCB4A1E56C30400CC1D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CCB421E56C30400CC1D5D /* LaunchScreen.storyboard */; };
 		5C6CCB4B1E56C30400CC1D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CCB441E56C30400CC1D5D /* Main.storyboard */; };
-		5C6CCB4D1E56C30400CC1D5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB471E56C30400CC1D5D /* ViewController.swift */; };
 		5C6CCB4F1E56C4D200CC1D5D /* HostTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CCB4E1E56C4D200CC1D5D /* HostTabBar.storyboard */; };
 		5C6CCB511E56C52D00CC1D5D /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CCB501E56C52D00CC1D5D /* HostViewController.swift */; };
 		5C6CCB571E56C87200CC1D5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CCB561E56C87200CC1D5D /* Assets.xcassets */; };
@@ -42,7 +41,6 @@
 		5C6CCB431E56C30400CC1D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C6CCB451E56C30400CC1D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C6CCB461E56C30400CC1D5D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C6CCB471E56C30400CC1D5D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C6CCB4E1E56C4D200CC1D5D /* HostTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HostTabBar.storyboard; sourceTree = "<group>"; };
 		5C6CCB501E56C52D00CC1D5D /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		5C6CCB561E56C87200CC1D5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				5C6CCB421E56C30400CC1D5D /* LaunchScreen.storyboard */,
 				5C6CCB441E56C30400CC1D5D /* Main.storyboard */,
 				5C6CCB461E56C30400CC1D5D /* Info.plist */,
-				5C6CCB471E56C30400CC1D5D /* ViewController.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -439,7 +436,6 @@
 				TargetAttributes = {
 					5C6CCB111E56C04700CC1D5D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3YVVUF6P5E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -488,7 +484,6 @@
 				5C6CCB8F1E5725FB00CC1D5D /* Auditor.swift in Sources */,
 				5C6CCB6F1E56E32300CC1D5D /* ChatMessageCell.swift in Sources */,
 				5C6CCB7B1E57001E00CC1D5D /* Constants.swift in Sources */,
-				5C6CCB4D1E56C30400CC1D5D /* ViewController.swift in Sources */,
 				5C6CCB491E56C30400CC1D5D /* AppDelegate.swift in Sources */,
 				5C6CCB7D1E57001E00CC1D5D /* StoryboardProvider.swift in Sources */,
 				5C6CCB8B1E57051300CC1D5D /* Auth.swift in Sources */,
@@ -623,7 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3YVVUF6P5E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "iCare/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbsoft.iCare;
@@ -636,7 +631,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3YVVUF6P5E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "iCare/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbsoft.iCare;

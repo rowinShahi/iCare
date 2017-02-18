@@ -8,6 +8,8 @@
 
 import Foundation
 class Utils: NSObject {
+  
+  // MARK: Feturn json  from bundle
   class func readJson(fileName:String, fileExtension:String? = "json") -> AnyObject? {
     guard let fileUrl =  Bundle.main.url(forResource: fileName, withExtension: fileExtension) else { return nil }
     guard let jsonData =  try? Data(contentsOf: fileUrl) else { return nil }

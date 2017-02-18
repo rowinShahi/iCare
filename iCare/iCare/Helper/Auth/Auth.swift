@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: Logined user saved
 class Auth: NSObject {
   static let shared: Auth = Auth()
   var currentUser:User?

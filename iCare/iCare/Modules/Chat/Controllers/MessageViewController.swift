@@ -9,11 +9,13 @@
 import UIKit
 
 class MessageViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
+  
+  // MARK: View Life Cycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+  
+  // MARK: IB Action
   @IBAction func didTapView(_ sender: Any) {
     navigationController?.present(Storyboard.chat.initWithNavigationController(), animated: true, completion: nil)
   }

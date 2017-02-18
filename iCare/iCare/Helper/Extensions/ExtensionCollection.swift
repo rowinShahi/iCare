@@ -8,6 +8,7 @@
 
 import Foundation
 extension String {
+  //MARK: returns list of urls exsit in string
   func extractURLs() -> [NSURL] {
     var urls : [NSURL] = []
     do {

@@ -20,7 +20,21 @@
                     <view key="view" contentMode="scaleToFill" id="9r2-oQ-L6u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News / Announcements Sections" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sir-pn-6Vp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sir-pn-6Vp" firstAttribute="leading" secondItem="9r2-oQ-L6u" secondAttribute="leading" id="2gm-wr-hCi"/>
+                            <constraint firstItem="hem-ss-twV" firstAttribute="top" secondItem="sir-pn-6Vp" secondAttribute="bottom" id="UYQ-ra-CUM"/>
+                            <constraint firstAttribute="trailing" secondItem="sir-pn-6Vp" secondAttribute="trailing" id="aOP-Qy-qX9"/>
+                            <constraint firstItem="sir-pn-6Vp" firstAttribute="top" secondItem="kqw-40-78h" secondAttribute="bottom" id="uRd-QD-aGc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="55W-rG-eK3"/>
                 </viewController>
