@@ -11,8 +11,11 @@ import UIKit
 class ChatViewController: UICollectionViewController {
   
   // MARK: Properties
+  // Cell Identifier for left right bubbles
   let leftCellId = "leftCellId"
   let rightCellId = "rightCellId"
+  
+  // Constraint for textView
   var containerViewBottomAnchor: NSLayoutConstraint?
   
   lazy var inputContainerView: ChatInputContainerView = {
@@ -21,6 +24,7 @@ class ChatViewController: UICollectionViewController {
     return chatInputContainerView
   }()
   
+  // Dataholder for list
   var messages:[Message] = [] {
     didSet{
       collectionView?.reloadData()
@@ -28,6 +32,11 @@ class ChatViewController: UICollectionViewController {
       collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
   }
+  
+  @IBAction func didTapClose(_ sender: Any) {
+    navigationController?.dismiss(animated: true, completion: nil)
+  }
+  
 }
 
 // MARK: View Life Cycle
@@ -57,6 +66,8 @@ extension ChatViewController {
 
 // MARK: Helper Methods
 extension ChatViewController {
+  
+  // load messages from locally
   func loadMessages() {
     let response = Utils.readJson(fileName: "messages")
     
@@ -66,6 +77,7 @@ extension ChatViewController {
     self.messages = list.map({ Message(dictionary: $0)})
   }
   
+  // Action handler when send button tapped
   func handleSend() {
     if inputContainerView.inputTextField.text!.characters.count > 0{
       let message = Message(dictionary:["text":inputContainerView.inputTextField.text! as AnyObject,
@@ -75,16 +87,20 @@ extension ChatViewController {
     }
   }
   
+  // set keyboard notification
   func setupKeyboardObservers() {
     NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
   }
   
+  // action handler when keyboard displayed
   func handleKeyboardDidShow() {
     if messages.count > 0 {
       let indexPath = IndexPath(item: messages.count - 1, section: 0)
       collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
     }
   }
+  
+  
 }
 
 // MARK: Collectionview Delegate
@@ -141,6 +157,7 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
     return CGSize(width: width, height: height)
   }
   
+  // Estimate the cell height according to content
   fileprivate func estimateFrameForText(_ text: String) -> CGRect {
     let size = CGSize(width: 200, height: 1000)
     let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)

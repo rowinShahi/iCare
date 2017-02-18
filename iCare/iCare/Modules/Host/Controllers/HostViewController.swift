@@ -26,8 +26,9 @@ extension HostViewController {
 
 // MARK: Helper Methods
 extension HostViewController {
+  // set controller for tabBar
   func setupTabControllers () {
-  
+    
     let controllers =  [TabDataSource.news.controller,
                         TabDataSource.chat.controller,
                         TabDataSource.more.controller]
@@ -49,8 +50,8 @@ enum TabDataSource {
       tabBarItem =  TabDataSource.setTabBarWith(title: "News", image: UIImage(named: "news_feed_icon"))
       controller =  Storyboard.news.initWithNavigationController()
     case .chat:
-      tabBarItem =  TabDataSource.setTabBarWith(title: "Chat", image: UIImage(named: "chat_icon"))
-      controller =  Storyboard.chat.initWithNavigationController()
+      tabBarItem =  TabDataSource.setTabBarWith(title: "Message", image: UIImage(named: "chat_icon"))
+      controller =  Storyboard.message.initWithNavigationController()
     case .more:
       tabBarItem =  TabDataSource.setTabBarWith(title: "More", image: UIImage(named: "more_icon"))
       controller =  Storyboard.more.initWithNavigationController()

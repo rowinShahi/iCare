@@ -13,7 +13,7 @@ protocol Auditor {
 }
 
 /*
- 2- Prevent any kind of phone number sharing with the following format +CCAABBBBBBB (Min and max length of 11 digits with prefix of “+”)
+ 1- Prevent any kind of phone number sharing with the following format +CCAABBBBBBB (Min and max length of 11 digits with prefix of “+”)
  */
 
 struct PhoneNumberAuditor: Auditor {
@@ -36,7 +36,7 @@ struct PhoneNumberAuditor: Auditor {
 }
 
 /*
- 3- URL in the chat message with the title of the page. 
+ 2- URL in the chat message with the title of the page.
     Any URL except carlist.my should be redacted.
  */
 struct WebAddressAuditor: Auditor {
@@ -47,6 +47,24 @@ struct WebAddressAuditor: Auditor {
     for url in urls{
       if url.absoluteString?.range(of:"carlist.my") == nil{
          result = result.replacingOccurrences(of: url.absoluteString!, with: "**********")
+      }
+    }
+    return result
+  }
+}
+
+/*
+ 3- Restricted Words Auditor
+ */
+struct BannedWordAuditor: Auditor {
+  func validateValue(_ value: String) -> String {
+    var result = value
+    let words = value.components(separatedBy: " ")
+    for word in words{
+      for bannedWord in bannedWords{
+        if bannedWord.lowercased() == word.lowercased(){
+          result = result.replacingOccurrences(of: word, with: "*..*")
+        }
       }
     }
     return result
@@ -72,8 +90,9 @@ struct CompositeAuditor: Auditor {
 
 // MARK: Auditor Configurator
 struct AuditorConfigurator {
-
+  
+// Content Audit for chat message
   func messageAuditor() -> Auditor {
-    return CompositeAuditor(auditors: PhoneNumberAuditor(), WebAddressAuditor())
+    return CompositeAuditor(auditors: PhoneNumberAuditor(), WebAddressAuditor(), BannedWordAuditor())
   }
 }

@@ -21,7 +21,7 @@ class ChatMessageCell: UICollectionViewCell {
     return tv
   }()
   
-  static let blueColor = UIColor.blue
+  static let blueColor = UIColor(red: 114/255, green: 170/255, blue: 237/255, alpha: 1)
   
   let bubbleView: UIView = {
     let view = UIView()
@@ -32,15 +32,6 @@ class ChatMessageCell: UICollectionViewCell {
     return view
   }()
   
-//  let profileImageView: UIImageView = {
-//    let imageView = UIImageView()
-//    imageView.translatesAutoresizingMaskIntoConstraints = false
-//    imageView.layer.cornerRadius = 16
-//    imageView.layer.masksToBounds = true
-//    imageView.contentMode = .scaleAspectFill
-//    return imageView
-//  }()
-  
   var bubbleWidthAnchor: NSLayoutConstraint?
   var bubbleViewRightAnchor: NSLayoutConstraint?
   var bubbleViewLeftAnchor: NSLayoutConstraint?
@@ -50,18 +41,8 @@ class ChatMessageCell: UICollectionViewCell {
     
     addSubview(bubbleView)
     addSubview(textView)
-   // addSubview(profileImageView)
-    
-    //x,y,w,h
-//    profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
-//    profileImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//    profileImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
-//    profileImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
-    
-    //x,y,w,h
     
     bubbleViewRightAnchor = bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
-   // bubbleViewRightAnchor?.isActive = true
     
     bubbleViewLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
     
@@ -70,7 +51,6 @@ class ChatMessageCell: UICollectionViewCell {
     bubbleWidthAnchor?.isActive = true
     bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     
-    //x,y,w,h
     textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
     textView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
@@ -80,7 +60,5 @@ class ChatMessageCell: UICollectionViewCell {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  
 }
 

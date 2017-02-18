@@ -12,8 +12,8 @@
         <!--Chat View Controller-->
         <scene sceneID="0iC-QB-WL9">
             <objects>
-                <collectionViewController id="54S-Sb-Zqr" customClass="ChatViewController" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="8zK-yp-dim">
+                <collectionViewController storyboardIdentifier="ChatViewController" id="54S-Sb-Zqr" customClass="ChatViewController" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8zK-yp-dim">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,11 +29,51 @@
                             <outlet property="delegate" destination="54S-Sb-Zqr" id="J1s-NT-c6l"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="CwB-uq-Tqd"/>
+                    <navigationItem key="navigationItem" id="CwB-uq-Tqd">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="KPc-IZ-yfD">
+                            <connections>
+                                <action selector="didTapClose:" destination="54S-Sb-Zqr" id="57b-ZM-x8o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pQ-qE-X3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1830" y="126"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="oH9-xs-Yyy">
+            <objects>
+                <viewController id="9WY-Mw-yoG" customClass="MessageViewController" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9lS-DZ-HR7"/>
+                        <viewControllerLayoutGuide type="bottom" id="EOd-ra-lQg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X07-gs-tuk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-y0-jSu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <state key="normal" title="TAP TO START CHAT"/>
+                                <connections>
+                                    <action selector="didTapView:" destination="9WY-Mw-yoG" eventType="touchUpInside" id="ZPm-uz-gps"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EOd-ra-lQg" firstAttribute="top" secondItem="F9s-y0-jSu" secondAttribute="bottom" id="9Qm-Ec-yr6"/>
+                            <constraint firstItem="F9s-y0-jSu" firstAttribute="top" secondItem="9lS-DZ-HR7" secondAttribute="bottom" id="FpR-bC-ZXe"/>
+                            <constraint firstAttribute="trailing" secondItem="F9s-y0-jSu" secondAttribute="trailing" id="PcP-fu-cHV"/>
+                            <constraint firstItem="F9s-y0-jSu" firstAttribute="leading" secondItem="X07-gs-tuk" secondAttribute="leading" id="hDB-Sj-ABC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kl1-EJ-6LM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ng-oX-NAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3405.5999999999999" y="769.56521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ab1-Kw-M1w">
@@ -52,6 +92,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybJ-wz-Pon" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1032.8" y="126.38680659670166"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n8P-fZ-PXK">
+            <objects>
+                <navigationController storyboardIdentifier="MessageNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2E2-vE-mxJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OCq-mY-tI2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9WY-Mw-yoG" kind="relationship" relationship="rootViewController" id="1OH-b7-5kf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g81-KK-2Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2625" y="770"/>
         </scene>
     </scenes>
 </document>

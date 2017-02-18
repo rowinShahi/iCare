@@ -10,7 +10,7 @@ import Foundation
 
 enum Storyboard: String, StoryboardProvider {
   
-  case host, news, chat, more
+  case host, news, chat, more, message
   
   // MARK: Return Storyboard Identifier
   var storyboardIdentifier: String {
@@ -20,7 +20,7 @@ enum Storyboard: String, StoryboardProvider {
         return "HostTabBar"
       case .news:
         return "News"
-      case .chat:
+      case .chat, .message:
         return "Chat"
       case .more:
         return "More"
@@ -40,6 +40,8 @@ enum Storyboard: String, StoryboardProvider {
         return "ChatViewController"
       case .more:
         return "MoreViewController"
+      case .message:
+        return "MessageViewController"
       }
     }
   }
@@ -56,6 +58,8 @@ enum Storyboard: String, StoryboardProvider {
         return "ChatNavigationController"
       case .more:
         return "MoreNavigationController"
+      case .message:
+        return "MessageNavigationController"
       }
     }
   }
